@@ -1,0 +1,56 @@
+Teri aankhon ki namkeen mastiyan
+Teri hansi ki beparwaah gustakhiyaan
+Teri zulfon ki leharaati angdaiyaan
+Nahi bhoolunga main
+Jab tak hai jaan, jab tak hai jaan
+
+
+
+function compare($farr,$sarr)
+{
+$ftable[0]=$farr['TABLE'];$fcol[0]=$farr['COlUMN'];$fwhere[0]=$farr['WHERE'];$fpk[0]=$farr['PK'];
+$fseq[0]=$farr['SEQUENCE'];
+$ftable[1]=$sarr['TABLE'];$fcol[1]=$sarr['COlUMN'];$fwhere[1]=$sarr['WHERE'];$fpk[1]=$farr['PK'];
+$fseq[1]=$farr['SEQUENCE'];
+/* if(count(explode(',',$farr['COlUMN']))==count(explode(',',$sarr['COlUMN'])))
+ {echo 'same';exit();}*/
+ for($i=0;$i<count($ftable);$i++)
+{ 
+ 	$sel[$i]='SELECT '.$fcol[$i].' from '.$ftable[$i].' where '.$fwhere[$i];
+insert($sel[$i],$i,$fpk[$i],$fseq[$i]);
+}
+
+echo "<pre>"; print_r($sel);
+
+ //echo count($ftable);echo "<br>";echo count(array_keys($fcol));exit(); 	
+ 	
+
+
+ //echo 'SELECT '.'S.'.str_replace(',',',S.',$scol).' from '.$stable.' as S '.$swhere;
+ /*$Qry=;
+ $sexe=select_oci();*/
+}
+function insert($sel,$i,$pk,$seq)
+{$refno='';
+  $param=($i==0)?'FIRST':'SECOND';	
+  $fetch=select_oci($sel);
+ while($row=oci_fetch_assoc($fetch)){ $srow=$row; }
+ $key=array_keys($srow);
+ $refno=$srow[$pk];$j=1;
+ for($i=0;$i<count($key);$i++)
+ {
+ 	$data[$i]=explode(' ',$srow[$key[$i]]);
+	foreach($data[$i] as $vkey=>$val)
+	{
+		$col[$key[$i]]="insert into tempinscompare(ID,REFNO,PARAM,COLUM,WORDS)values"."($seq,"."$refno".",'".$param."'".",'".$key[$i]."',"."'$val')";//echo "<br>";
+		$f=select_oci($col[$key[$i]]);
+	}
+
+ }
+ return $cnt;
+}
+
+/*02nov-17*/
+module modified due to netrefno is add from other module and because of that module misbehave  to edit record in specific rights to edit after clearing if paymod in(4,7).
+
+/*Famouss Green Polypropylene 11 In 1 Vegetable Slicer And Dicer */
